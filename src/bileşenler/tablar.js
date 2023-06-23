@@ -1,3 +1,6 @@
+
+
+
 const Tablar = (konu) => {
   // GÖREV 3
   // ---------------------
@@ -13,9 +16,46 @@ const Tablar = (konu) => {
   //   <div class="tab">teknoloji</div>
   // </div>
   //
+
+  const topics =document.createElement("div");
+  topics.classList.add("topics");
+
+ konu.map((item,ind)=>{
+   const tab=document.createElement("div");
+   tab.classList.add("tab");
+   tab.textContent=item;
+   topics.appendChild(tab);
+   console.log(item);
+ });
+
+
+ return topics;
+
 }
 
+
+
+
+
+
+
 const tabEkleyici = (secici) => {
+
+  const Data= {
+    konular:
+  [
+    "javascript","bootstrap","teknoloji","jquery","node.js"
+  ],
+
+}
+
+
+   const tablar = Tablar(Data.konular);
+   const tablarContainer = document.querySelector(secici);
+   tablarContainer.appendChild(tablar);
+
+
+
   // GÖREV 4
   // ---------------------
   // Tek argümanı olarak bir css seçici alan bu işlevi uygulayın.
@@ -23,6 +63,12 @@ const tabEkleyici = (secici) => {
   // Yanıtın içindeki konu dizisini bulun ve Tablar bileşenini kullanarak tabları oluşturun.
   // Tabları, fonksiyona iletilen seçiciyle eşleşen DOM'daki öğeye ekleyin.
   //
+
+   
+
 }
+
+
+
 
 export { Tablar, tabEkleyici }

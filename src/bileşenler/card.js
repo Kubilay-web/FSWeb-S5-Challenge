@@ -1,4 +1,7 @@
-var cardsContainer = document.querySelector(".cards-container");
+import axios from "axios";
+
+
+
 const Card = (makale) => {
   // GÖREV 5
   // ---------------------
@@ -19,43 +22,35 @@ const Card = (makale) => {
   // </div>
   //
 
-
- 
-
   // const cardDiv = document.createElement('div');
   // cardDiv.classList.add('card');
-  
-  // const headlineDiv = document.createElement('div');
-  // headlineDiv.classList.add('headline');
-  // headlineDiv.textContent = anabaslik;
-  // cardDiv.appendChild(headlineDiv);
-  
-  // const authorDiv = document.createElement('div');
-  // authorDiv.classList.add('author');
-  // cardDiv.appendChild(authorDiv);
-  
-  // const imgContainerDiv = document.createElement('div');
-  // imgContainerDiv.classList.add('img-container');
-  // authorDiv.appendChild(imgContainerDiv);
-  
-  // const authorImg = document.createElement('img');
-  // authorImg.src = yazarFoto;
-  // imgContainerDiv.appendChild(authorImg);
-  
-  // const authorSpan = document.createElement('span');
-  // authorSpan.textContent = `${yazarAdı} `;
-  // authorDiv.appendChild(authorSpan);
 
 
-  // cardDiv.append(headlineDiv,authorDiv,imgContainerDiv,authorImg,authorSpan);
-  // cardsContainer.appendChild(cardDiv);
   
-  // cardDiv.addEventListener('click', () => {
-  // console.log(anabaslik);
-  // });
-  
+  //   const headlineDiv = document.createElement('div');
+  //   headlineDiv.classList.add('headline');
+
+  //   headlineDiv.textContent = item.anabaslik;
+  //   cardDiv.appendChild(headlineDiv);
+  //   const authorDiv = document.createElement('div');
+  //   authorDiv.classList.add('author');
+  //   cardDiv.appendChild(authorDiv);
+  //   const imgContainerDiv = document.createElement('div');
+  //   imgContainerDiv.classList.add('img-container');
+  //   authorDiv.appendChild(imgContainerDiv);
+  //   const authorImg = document.createElement('img');
+  //   authorImg.src = yazarFoto;
+  //   imgContainerDiv.appendChild(authorImg);
+  //   const authorSpan = document.createElement('span');
+  //   authorSpan.textContent = `${item.yazarAdı} `;
+  //   authorDiv.appendChild(authorSpan)
+  //   cardDiv.append(headlineDiv, authorDiv, imgContainerDiv, authorImg, authorSpan);
+  //   cardsContainer.appendChild(cardDiv);
+    
+
+ 
+ 
   // return cardDiv;
-
 
 
 
@@ -70,6 +65,36 @@ const cardEkleyici = (secici) => {
   // Card bileşenini kullanarak yanıttaki her makale nesnesinden bir kart oluşturun.
   // Her cardı, fonksiyona iletilen seçiciyle eşleşen DOM'daki öğeye ekleyin.
   //
+
+
+  const cardContainer = document.querySelector(secici);
+
+  // Make a request for a user with a given ID
+  axios.get('http://localhost:5001/api/makaleler')
+    .then(function (response) {
+      // handle success
+
+      const articles = response.data.makaleler;
+
+      Object.keys(articles).map((article)=>{
+        articles[article].map((item=>{
+
+        }))
+
+      const cards = Card(response.data.makaleler);
+      cardContainer.appendChild(cards);
+      })
+
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
+
 }
 
 export { Card, cardEkleyici }
